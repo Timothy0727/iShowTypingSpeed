@@ -12,7 +12,6 @@ body {
 /* TODO: modify location (margin and padding) of the header */
 .page_header {
     display: flex;
-    border: solid red;
     align-items: center;
     gap: 1%;
     pointer-events: none;
@@ -38,39 +37,25 @@ body {
 }
 
 .input_box {
-    width: 40%;
+    width: 1000px;
     height: 100px;
-    font-size: 24px;
+    font-size: 30px;
+    display: block;
+    margin: 0 auto;
 }
 
 .stats {
-    /* display: grid;
-    grid-auto-flow: column;
-    grid-template-areas: none;
-    align-items: flex-start;
-    justify-content: space-between;
-    column-gap: 1rem; */
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     gap: 20px;
     padding: auto;
     margin-top: 20px;
-
-    /* width: 40%; */
-    border: solid blue;
 }
 
 .stats_holder {
-    /* display: flex;
-    flex-direction: row; */
-    /* align-items: center;
-    justify-content: center;
-    text-align: center; */
-    /* padding: 10px; */
     font-size: 30px;
     gap: 5px;
-    border: solid red;
 }
 
 .top {
@@ -83,21 +68,17 @@ body {
 
 .restart {
     margin-top: 1%;
-    border: solid red;
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: relative;
-    
 }
 
 .start_new_test {
     cursor: pointer;
     font-size: 50px;
-
     position: relative;
-    display: inline-block;
+    display: none;
     border-bottom: 1px dotter black;
 }
 
@@ -117,6 +98,15 @@ body {
 
 .start_new_test:hover .tooltiptext {
     visibility: visible;
+}
+
+.incorrect_char {
+    color: red;
+    text-decoration: underline;
+}
+
+.correct_char {
+    color: darkgreen;
 }
 
 /* Style the footer */
