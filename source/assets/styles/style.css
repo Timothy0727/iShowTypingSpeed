@@ -1,0 +1,148 @@
+/* CSS for the page */
+
+/* Style the whole page */
+body {
+    background-color: #E2AEDF;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hihdden;
+}
+
+main {
+    height: 85vh;
+}
+
+/* Style the header */
+/* TODO: modify location (margin and padding) of the header */
+.page_header {
+    display: flex;
+    align-items: center;
+    gap: 1%;
+    pointer-events: none;
+    user-select: none;
+    max-height: 100%;
+}
+
+/* Style the header items */
+.header_item {
+    padding: 10px;
+    font-size: 36px;
+}
+
+.container {
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.quote {
+    font-size: 50px;
+    padding-bottom: 4%;
+    pointer-events: none;
+    user-select: none;
+}
+
+.input_box {
+    width: 1000px;
+    height: 100px;
+    font-size: 30px;
+    display: block;
+    margin: 0 auto;
+    resize: none;
+    color: black;
+    /* background-color: yellow; */
+}
+
+.stats {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: auto;
+    margin-top: 20px;
+}
+
+.stats_holder {
+    font-size: 30px;
+    gap: 5px;
+}
+
+.top {
+    font-family: Courier New;
+}
+
+.bottom {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.restart {
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.start_new_test {
+    cursor: pointer;
+    font-size: 50px;
+    position: relative;
+    display: none;
+    border-bottom: 1px dotter black;
+}
+
+.start_new_test .tooltiptext {
+    visibility: hidden;
+    font-size: 10px;
+    width: 120px;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+.start_new_test:hover .tooltiptext {
+    visibility: visible;
+}
+
+.incorrect_char {
+    color: red;
+    /* text-decoration: underline; */
+}
+
+.correct_char {
+    color: darkgreen;
+}
+
+.next_char {
+    text-decoration: underline;
+}
+/* 
+main::after {
+    content: "";
+    display: block;
+    height: 200px;
+} */
+
+/* Style the footer */
+footer {
+    position: relative;
+    text-align: center;
+    line-height: 1rem;
+    color: blue;
+    bottom: 0;
+    max-width: 25%;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}

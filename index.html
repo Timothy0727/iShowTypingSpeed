@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://kit.fontawesome.com/306a08d434.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <title>iShowTypingSpeed</title>
+        <link rel="stylesheet" href="source/assets/styles/style.css">
+    </header>
+
+    <main>
+        <div class="page_container">
+            <div class="page_header">
+                <i class="header_item fa-solid fa-keyboard"></i>
+                <h1 class="header_item title">iShowTypingSpeed</h1>
+            </div>
+            
+            <div class="container">
+                <div class="quote">
+                    Click on the area below to start the game.
+                </div>
+
+                <textarea class="input_box"
+                    placeholder="start typing here..."
+                    oninput="processInputText()"
+                    onfocus="startGame()"></textarea>
+
+                <div class="stats">
+                    <div class="time stats_holder">
+                        <div class="top">Time</div>
+                        <div class="final_time bottom">1233</div>
+                    </div>
+                    <div class="wpm stats_holder">
+                        <div class="top">WPM</div>
+                        <div class="final_wpm bottom">223</div>
+                    </div>
+                    <div class="accuracy stats_holder">
+                        <div class="top">Accuracy</div>
+                        <div class="final_accuracy bottom">100%</div>
+                    </div>
+                </div>
+
+                <div class="restart">
+                    <i class="fa-solid fa-arrow-rotate-right start_new_test" title="Click to start a new test" onclick="resetValues()">
+                        <span class="tooltiptext">Click here to start a new test</span>
+                    </i>
+                    <!-- <button class="restart_button">Click here to restart</button> -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>@2024 iShowTypingSpeed. All right reserved.</p>
+    </footer>
+
+    <!--Link JavaScript file here-->
+    <script src="source/assets/scripts/game.js"></script>
+    <script>
+        // Automatically focus on the input box when the page loads
+        window.onload = function() {
+            document.querySelector('.input_box').focus();
+        };
+    </script>
+</body>
+</html>
