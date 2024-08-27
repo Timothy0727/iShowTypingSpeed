@@ -1,7 +1,5 @@
-let wordsArray = [];
 const wordsEachLine = 10;   // number of words each line
 const totalLines = 5;       // number of lines
-readTextFile("source/words.txt")
 
 // quotes to be typed
 let quotes_array = [];
@@ -23,19 +21,35 @@ let errors = 0;
 let total_errors = 0;
 let characterTyped = 0;
 
+document.addEventListener('DOMContentLoaded', () => {
+    quote_text.textContent = "Click on the area below to start the game."
+
+    const storedWords = localStorage.getItem('wordsLoaded');
+    if (storedWords) {
+        wordsArray = JSON.parse(storedWords);
+        quotes_array = generateWords();
+    } else {
+        readTextFile("source/words.txt").then(() => {
+            localStorage.setItem('wordsLoaded', JSON.stringify(wordsArray));
+            quotes_array = generateWords();
+        });
+    }
+});
+
 async function readTextFile(filePath) {
+    console.log("haha")
     try {
         const response = await fetch(filePath);
         const data = await response.text();
         wordsArray = data.split('\n').map(word => word.trim()).filter(word => word.length > 0);
         console.log("Words loaded successfully.");
         quotes_array = generateWords();
-
     } catch (error) {
         console.error('Error loading the file: ', error);
     }
 }
 
+generateWords();
 
 function generateWords() {
     if (wordsArray.length === 0) {
@@ -64,12 +78,16 @@ function updateQuote() {
         charSpan.innerText = char
         quote_text.appendChild(charSpan)
     });
+
+    // Underline the first character by default
+    if (quote_text.firstChild) {
+        quote_text.firstChild.classList.add('next_char');
+    }
 }
 
 function processInputText() {
     quoteSpanArray = quote_text.querySelectorAll('span');
     curr_input = input_area.value;
-    // console.log(curr_input);
     curr_input_array = curr_input.split('');
     let localErrors = 0
 
@@ -83,15 +101,24 @@ function processInputText() {
 
         if (typedChar == null) {
             char.classList.remove('correct_char');
-            char.classList.remove('incorect_char');
+            char.classList.remove('incorrect_char');
+            char.classList.remove('next_char');
         } else if (typedChar === char.innerText) {
             char.classList.add('correct_char');
-            char.classList.remove('incorrect_char');
+            char.classList.remove('incorrect_char', 'next_char');
+            if (index < quoteSpanArray.length - 1) {
+                quoteSpanArray[index + 1].classList.add('next_char'); // Move underline to next character
+            }
         } else {
-            char.classList.add('incorrect_char')
-            char.classList.remove('correct_char')
+            char.classList.add('incorrect_char');
+            char.classList.remove('correct_char', 'next_char');
         }
     });
+
+    if (curr_input.length < current_quote.length) {
+        quoteSpanArray[curr_input.length].classList.add('next_char');
+    }
+
 
     if (curr_input.length == current_quote.length) {
         curr_input = input_area.value;
@@ -120,12 +147,15 @@ function processInputText() {
 
 
 function startGame() {
-    resetValues();
+    // resetValues();
+    const focusOnTextInput = () => input_area.focus();
+    document.addEventListener('click', focusOnTextInput);
+    document.addEventListener('DOMContentLoaded', focusOnTextInput);
+    quote_text.textContent = 'Click on the area below to start the game.';
     updateQuote();
     timeElapsed = Date.now()
     input_area.disabled = false;
     input_area.focus()
-    
 }
 
 

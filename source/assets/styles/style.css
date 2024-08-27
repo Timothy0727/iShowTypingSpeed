@@ -4,8 +4,14 @@
 body {
     background-color: #E2AEDF;
     color: #000000;
-    width: 100%;
-    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hihdden;
+}
+
+main {
+    height: 85vh;
 }
 
 /* Style the header */
@@ -16,10 +22,12 @@ body {
     gap: 1%;
     pointer-events: none;
     user-select: none;
+    max-height: 100%;
 }
 
 /* Style the header items */
 .header_item {
+    padding: 10px;
     font-size: 36px;
 }
 
@@ -42,6 +50,9 @@ body {
     font-size: 30px;
     display: block;
     margin: 0 auto;
+    resize: none;
+    color: black;
+    /* background-color: yellow; */
 }
 
 .stats {
@@ -102,14 +113,36 @@ body {
 
 .incorrect_char {
     color: red;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 .correct_char {
     color: darkgreen;
 }
 
+.next_char {
+    text-decoration: underline;
+}
+/* 
+main::after {
+    content: "";
+    display: block;
+    height: 200px;
+} */
+
 /* Style the footer */
 footer {
+    position: relative;
+    text-align: center;
+    line-height: 1rem;
     color: blue;
+    bottom: 0;
+    max-width: 25%;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+}
+
+* {
+    box-sizing: border-box;
 }
